@@ -3,11 +3,9 @@ import Header from "../components/header/Header";
 import Banner from "../components/banner/Banner";
 import { Link } from "react-router-dom";
 import Services from "../components/services/Services";
-import { useGlobalContext } from "../context/contextProvider";
+import FeaturedRooms from "../components/featuredRooms/FeaturedRooms";
 
 const Home = () => {
-  const asd = useGlobalContext();
-  console.log(asd);
   return (
     <>
       <Header>
@@ -21,6 +19,7 @@ const Home = () => {
         </Banner>
       </Header>
       <Services />
+      <FeaturedRooms />
     </>
   );
 };
