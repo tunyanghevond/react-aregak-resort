@@ -4,7 +4,7 @@ import "./App.css";
 import Navbar from "./components/navbar/Navbar";
 import Home from "./pages/Home";
 import Rooms from "./pages/Rooms";
-import SingleRoom from "./pages/SingleRoom";
+import SingleRoom from "./pages/singleroom/SingleRoom";
 import Error from "./pages/Error";
 
 import { Routes, Route } from "react-router-dom";
