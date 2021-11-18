@@ -1,7 +1,7 @@
 import React from "react";
 import "./FeaturedRooms.css";
 import Loading from "../loding/Loading";
-import Rooms from "../rooms/Rooms";
+import Room from "../room/Room";
 import { useGlobalContext } from "../../context/contextProvider";
 
 const FeaturedRooms = () => {
@@ -18,7 +18,7 @@ const FeaturedRooms = () => {
       </div>
       <div className="featured-rooms-center">
         {featuredRooms.map((rooms) => {
-          return <Rooms key={rooms.id} room={rooms} />;
+          return <Room key={rooms.id} room={rooms} />;
         })}
       </div>
     </section>

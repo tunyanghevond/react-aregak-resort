@@ -1,9 +1,9 @@
 import React from "react";
-import "./Rooms.css";
+import "./room.css";
 import defaultImg from "../../images/room-1.jpeg";
 import { Link } from "react-router-dom";
 
-const Rooms = ({ room }) => {
+const Room = ({ room }) => {
   const { name, slug, images, price } = room;
 
   return (
@@ -23,4 +23,4 @@ const Rooms = ({ room }) => {
   );
 };
 
-export default Rooms;
+export default Room;
