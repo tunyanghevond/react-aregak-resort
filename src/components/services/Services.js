@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Services.css";
+import Title from "../title/Title";
 import { FaCocktail, FaHiking, FaShuttleVan, FaBeer } from "react-icons/fa";
 
 const Services = () => {
@@ -28,10 +29,7 @@ const Services = () => {
 
   return (
     <section className="services">
-      <div className="services-title">
-        <h4> services</h4>
-        <div />
-      </div>
+      <Title title="services" />
       <div className="services-center">
         {services.map((item, index) => {
           return (

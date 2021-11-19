@@ -61,7 +61,9 @@ export const RoomProvider = ({ children }) => {
     const type = e.target.type;
     const name = e.target.name;
     const value = e.target.value;
-    console.log(type, name, value);
+    console.log(
+      `this is type:${type}, name: this is ${name},this is value: ${value} `
+    );
   };
 
   const filterRooms = () => {
