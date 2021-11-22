@@ -1,4 +1,5 @@
 import { useState, useEffect, createContext, useContext } from "react";
+import { scryRenderedDOMComponentsWithClass } from "react-dom/test-utils";
 import items from "../data";
 
 const RoomContext = createContext();
@@ -58,17 +59,46 @@ export const RoomProvider = ({ children }) => {
   };
 
   const handleChange = (e) => {
-    const type = e.target.type;
+    const target = e.target;
+    const value = e.type === "checkbox" ? target.checked : target.value;
     const name = e.target.name;
-    const value = e.target.value;
-    console.log(
-      `this is type:${type}, name: this is ${name},this is value: ${value} `
-    );
+    setFilterhRoom({
+      ...filterRoom,
+      [name]: value,
+    });
+    filterRooms();
   };
 
   const filterRooms = () => {
-    console.log("hello");
+    let { type, capacity, price, minSize, maxSize } = filterRoom;
+    // all the rooms
+    let tempRoom = [...rooms];
+    //transform values
+    capacity = parseInt(capacity);
+    price = parseInt(price);
+
+    // filter by type
+    if (type !== "all") {
+      tempRoom = rooms.filter((room) => room.type === type);
+    }
+
+    // filter by capacity
+    if (capacity !== 1) {
+      tempRoom = tempRoom.filter((room) => room.capacity >= capacity);
+    }
+    // filter by price
+    tempRoom = tempRoom.filter((room) => room.price <= price);
+
+    //filtre by size
+    tempRoom = tempRoom.filter(
+      (room) => room.size >= minSize && room.size <= maxSize
+    );
+    setSortedRooms(tempRoom);
   };
+
+  useEffect(() => {
+    filterRooms();
+  }, [filterRoom]);
   return (
     <RoomContext.Provider
       value={{

@@ -13,7 +13,6 @@ const SingleRoom = () => {
   const { getSingleRoom } = useGlobalContext();
   const room = getSingleRoom(slug);
 
-  console.log(room);
   if (!room) {
     return (
       <div className="error">
@@ -36,6 +35,7 @@ const SingleRoom = () => {
     images,
   } = room;
   const [mainImg, ...defaultImg] = images;
+  console.log(images);
   return (
     <>
       <Header img={mainImg || defaultBcg}>
@@ -47,11 +47,11 @@ const SingleRoom = () => {
       </Header>
       <section className="single-room">
         <div className="single-room-images">
-          {defaultImg.map((image, index) => {
-            return <img className="" key={index} src={image} alt={name} />;
+          {images.map((image, index) => {
+            return <img key={index} src={image} alt={name} />;
           })}
         </div>
-        <din className="single-room-info">
+        <div className="single-room-info">
           <article className="desc">
             <h3>details</h3>
             <p>{description}</p>
@@ -67,7 +67,7 @@ const SingleRoom = () => {
             <h6>{pets ? "pets allowed" : "no pets allow"}</h6>
             <h6>{breakfast && "free breakfast included"}</h6>
           </article>
-        </din>
+        </div>
       </section>
       <section className="room-extras">
         <h6>extras</h6>
