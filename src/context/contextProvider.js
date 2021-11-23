@@ -1,5 +1,4 @@
 import { useState, useEffect, createContext, useContext } from "react";
-import { scryRenderedDOMComponentsWithClass } from "react-dom/test-utils";
 import items from "../data";
 
 const RoomContext = createContext();
@@ -34,13 +33,13 @@ export const RoomProvider = ({ children }) => {
     setSortedRooms(rooms);
     setFeaturedRooms(featuredRooms);
     setLoading(false);
-    setFilterhRoom((filterRoom) => ({
-      ...filterRoom,
-      price: maxPrice,
-      maxPrice,
-      maxSize,
-    }));
+    setFilterhRoom((filterRoom) => {
+      return { ...filterRoom, price: maxPrice, maxPrice, maxSize };
+    });
   }, []);
+  useEffect(() => {
+    filterRooms();
+  }, [filterRoom]);
 
   const formatData = (arr) => {
     let tempItems = arr.map((item) => {
@@ -60,7 +59,7 @@ export const RoomProvider = ({ children }) => {
 
   const handleChange = (e) => {
     const target = e.target;
-    const value = e.type === "checkbox" ? target.checked : target.value;
+    const value = target.type === "checkbox" ? target.checked : target.value;
     const name = e.target.name;
     setFilterhRoom({
       ...filterRoom,
@@ -70,12 +69,12 @@ export const RoomProvider = ({ children }) => {
   };
 
   const filterRooms = () => {
-    let { type, capacity, price, minSize, maxSize } = filterRoom;
+    let { type, capacity, minSize, maxSize, breakfast, pets } = filterRoom;
     // all the rooms
     let tempRoom = [...rooms];
     //transform values
     capacity = parseInt(capacity);
-    price = parseInt(price);
+    //price = parseInt(price);
 
     // filter by type
     if (type !== "all") {
@@ -87,18 +86,24 @@ export const RoomProvider = ({ children }) => {
       tempRoom = tempRoom.filter((room) => room.capacity >= capacity);
     }
     // filter by price
-    tempRoom = tempRoom.filter((room) => room.price <= price);
+    // tempRoom = tempRoom.filter((room) => room.price <= price);
 
     //filtre by size
     tempRoom = tempRoom.filter(
       (room) => room.size >= minSize && room.size <= maxSize
     );
+
+    //filter by breakfast
+    if (breakfast) {
+      tempRoom = tempRoom.filter((room) => room.breakfast === true);
+    }
+    //filter by pets
+    if (pets) {
+      tempRoom = tempRoom.filter((room) => room.pets === true);
+    }
     setSortedRooms(tempRoom);
   };
 
-  useEffect(() => {
-    filterRooms();
-  }, [filterRoom]);
   return (
     <RoomContext.Provider
       value={{

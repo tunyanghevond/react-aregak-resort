@@ -34,8 +34,8 @@ const SingleRoom = () => {
     pets,
     images,
   } = room;
-  const [mainImg, ...defaultImg] = images;
-  console.log(images);
+  const [mainImg] = images;
+
   return (
     <>
       <Header img={mainImg || defaultBcg}>

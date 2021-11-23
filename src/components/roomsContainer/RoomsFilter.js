@@ -9,9 +9,9 @@ const RoomsFilter = ({ room }) => {
   const {
     type,
     capacity,
-    price,
-    minPrice,
-    maxPrice,
+    // price,
+    // minPrice,
+    // maxPrice,
     minSize,
     maxSize,
     breakfast,
@@ -67,7 +67,7 @@ const RoomsFilter = ({ room }) => {
         </div>
         {/* end guests */}
         {/* room price*/}
-        <div className="form-group">
+        {/* <div className="form-group">
           <label htmlFor="price">room price ${price}</label>
           <input
             type="range"
@@ -79,7 +79,7 @@ const RoomsFilter = ({ room }) => {
             onChange={handleChange}
             className="form-control"
           />
-        </div>
+        </div> */}
         {/* end of room price*/}
         {/* size */}
         <div className="form-group">
@@ -105,28 +105,27 @@ const RoomsFilter = ({ room }) => {
         </div>
         {/* end of the size */}
         {/* extras */}
-        {/* <div className="form-group">
+        <div className="form-group">
           <div className="single-extra">
-            <label htmlFor="breakfast">breakfast</label>
             <input
-              type="chekbox"
-              id="breakfast"
+              type="checkbox"
               name="breakfast"
+              id="breakfast"
               checked={breakfast}
               onChange={handleChange}
             />
+            <label htmlFor="breakfast">breakfast</label>
           </div>
           <div className="single-extra">
-            <label htmlFor="pets">breakfast</label>
             <input
-              type="chekbox"
-              id="pets"
+              type="checkbox"
               name="pets"
               checked={pets}
               onChange={handleChange}
             />
+            <label htmlFor="breakfast">pets</label>
           </div>
-        </div> */}
+        </div>
         {/* end of extras */}
       </form>
     </section>

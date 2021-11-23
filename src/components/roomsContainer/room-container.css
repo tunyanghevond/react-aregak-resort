@@ -40,6 +40,9 @@
 .form-group {
   text-transform: capitalize;
 }
+#price {
+  color: red;
+}
 .form-group label {
   display: block;
   letter-spacing: var(--mainSpacing);
