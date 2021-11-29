@@ -69,7 +69,8 @@ export const RoomProvider = ({ children }) => {
   };
 
   const filterRooms = () => {
-    let { type, capacity, minSize, maxSize, breakfast, pets } = filterRoom;
+    let { type, capacity, minSize, maxSize, breakfast, pets, price } =
+      filterRoom;
     // all the rooms
     let tempRoom = [...rooms];
     //transform values
@@ -86,7 +87,7 @@ export const RoomProvider = ({ children }) => {
       tempRoom = tempRoom.filter((room) => room.capacity >= capacity);
     }
     // filter by price
-    // tempRoom = tempRoom.filter((room) => room.price <= price);
+    tempRoom = tempRoom.filter((room) => room.price <= price);
 
     //filtre by size
     tempRoom = tempRoom.filter(
