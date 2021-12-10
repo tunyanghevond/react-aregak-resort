@@ -2,7 +2,7 @@ import React from "react";
 import "./FeaturedRooms.css";
 import Loading from "../loding/Loading";
 import Room from "../room/Room";
-import { useGlobalContext } from "../../context/contextProvider";
+import { useGlobalContext } from "../../context/context";
 
 const FeaturedRooms = () => {
   const { loading, featuredRooms } = useGlobalContext();

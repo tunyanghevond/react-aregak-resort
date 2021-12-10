@@ -6,7 +6,7 @@ import defaultBcg from "../../images/room-1.jpeg";
 import Header from "../../styledComponents/styleHeader";
 import Banner from "../../components/banner/Banner";
 
-import { useGlobalContext } from "../../context/contextProvider";
+import { useGlobalContext } from "../../context/context";
 
 const SingleRoom = () => {
   const { slug } = useParams();

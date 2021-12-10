@@ -1,6 +1,6 @@
 import React from "react";
 import Title from "../title/Title";
-import { useGlobalContext } from "../../context/contextProvider";
+import { useGlobalContext } from "../../context/context";
 const getUniqValues = (arr, type) => {
   return [...new Set(arr.map((item) => item[type]))];
 };
